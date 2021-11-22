@@ -1,5 +1,6 @@
-exec=vol
-infile=sound/rect.wav
+main=fir
+exec=$(main)
+infile=sound/sin.wav
 outfile=out.wav
 
 default:
@@ -7,16 +8,18 @@ default:
 	make test
 
 test:
+	rm -f out*
 	./$(exec) $(infile) $(outfile)
+	./plot $(outfile)
 
 build:
-	tcc -g *.c -o $(exec)
+	tcc -g $(main).c include/*.c -o $(exec)
 
 debug:
 	./$(exec) test.wav out.wav || gdb $(exec) core
 
 clean:
-	rm *.o
+	rm *.o *.png
 	rm $(exec)
 
 h:
