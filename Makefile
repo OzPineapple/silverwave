@@ -1,19 +1,21 @@
-main=fir
+main=conv
 exec=$(main)
-infile=sound/sin.wav
+infile=sound/sqrt.wav sound/sqrt.wav
 outfile=out.wav
+cc=tcc
+opts=-lm -g
 
 default:
 	make build
 	make test
 
 test:
-	rm -f out*
+	rm -f out* img/out.png
 	./$(exec) $(infile) $(outfile)
 	./plot $(outfile)
 
 build:
-	tcc -g $(main).c include/*.c -o $(exec)
+	$(cc) $(opts) $(main).c include/*.c -o $(exec)
 
 debug:
 	./$(exec) test.wav out.wav || gdb $(exec) core
