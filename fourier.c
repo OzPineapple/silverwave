@@ -13,11 +13,13 @@ int main(int argc, char ** argv ){
 	int    K = wav->data->size >> 1;
 	short *r = ecalloc( wav->data->size, 2 );
 
+	puts("Progess:");
 	for( size_t k=0; k<K; k++){
 		for( size_t n=0; n<K; n++)
 			r[k] += x[n] * cos(2*M_PI*n*k/K);
-		printf("%hd -> %hu\n", x[k], r[k] );
+		printf("\r %d/%d shots: %hd -> %hu", k, K, x[k], r[k] );
 	}
+	printf("\nDone\n");
 
 	free( wav->data->data );
 	wav->data->data = (char*) r;

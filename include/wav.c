@@ -29,6 +29,15 @@ Wav *initWav( char * file ){
 	read( fd, (char*) wav->data, 8);
 	wav->data->data = malloc( wav->data->size );
 	read( fd, (char*) wav->data->data, wav->data->size );
+	read( fd, (char*) &id, 4);
+	if( !strncmp( (char*) &id, "LIST", 4) ){
+		lseek( fd, -4, SEEK_CUR );
+		wav->list = ecalloc( 1, sizeof( List ) );
+		read( fd, (char*) wav->list->id, 4 );
+		read( fd, (char*) & wav->list->size, 4 );
+		wav->list->data = ecalloc( wav->list->size, sizeof(char) );
+		read( fd, wav->list->data, wav->list->size );
+	}
 	close( fd );
 	return wav;
 }
@@ -38,6 +47,11 @@ void writeWav( Wav *wav, char *file ){
 	if( fd == -1 ) die("Could not open %s", file );
 	write( fd, (char*) wav->riff, sizeof(Riff) );
 	write( fd, (char*) wav->fmt,  sizeof(Fmt)  );
+	if( wav->list ){
+		write( fd, (char*) wav->list->id, 4 );
+		write( fd, (char*) & wav->list->size, 4 );
+		write( fd, wav->list->data, wav->list->size );
+	}
 	write( fd, (char*) wav->data, 8 );
 	write( fd, (char*) wav->data->data, wav->data->size );
 	close( fd );
@@ -78,18 +92,20 @@ void infoWav( Wav *wav ){
 		printf( "%.4s\n\tSize: %i Bytes\n", wav->list->id, wav->list->size);
 		char *data = wav->list->data;
 		printf("\t%.4s\n", data );
-		data+=4;
 		int pos = 4;
 		int size;
+		data+=pos;
 		while( pos < wav->list->size ){
 			printf("\t%.4s ", data );
-			data+=4;
+			pos+=4;
+			data+=pos;
 			size = * (int*) data;
 			printf("Size: %i Bytes\n", size);
-			data+=4;
+			pos+=4;
+			data+=pos;
 			printf("\t\t%.*s\n", size, data);
-			data+=size;
 			pos += size + 8;
+			data+=pos;
 		}
 	}
 	printf("%.4s\n\tSize: %i Bytes\n\tData: RAW\n", wav->data->id, wav->data->size );

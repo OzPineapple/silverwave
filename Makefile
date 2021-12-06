@@ -1,11 +1,13 @@
-main=conv
+main=fourier
 exec=$(main)
-infile=sound/sqrt.wav sound/sqrt.wav
+# infile=sound/sqrt.wav sound/sqrt.wav
+infile=sound/cos62.5.hex.5.wav
 outfile=out.wav
 cc=tcc
 opts=-lm -g
 
 default:
+	make clean
 	make build
 	make test
 
@@ -21,8 +23,8 @@ debug:
 	./$(exec) test.wav out.wav || gdb $(exec) core
 
 clean:
-	rm *.o *.png
-	rm $(exec)
+	rm -f *.o
+	rm -f $(exec)
 
 h:
 	sed -i "/SIGNATURES/,$$ d" $n.h
