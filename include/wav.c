@@ -71,8 +71,10 @@ Wav *destroyWav( Wav * wav ){
 }
 
 void infoWav( Wav *wav ){
-	printf("%.4s\n\tSize of file: %i Bytes\n\tType: %.4s\n", wav->riff->id, wav->riff->size + 8, wav->riff->format);
 	printf("%.4s\n"
+			"\tSize of file: %i Bytes\n"
+			"\tType: %.4s\n"
+			"%.4s\n"
 			"\tSize: %i Bytes\n"
 			"\tAudio Format: %s\n"
 			"\tNumber of Channels: %hi\n"
@@ -80,6 +82,8 @@ void infoWav( Wav *wav ){
 			"\tByte rate: %hi Bytes\n"
 			"\tBlock aling: %hi Bytes\n"
 			"\tBits per sample: %i Bits\n",
+			wav->riff->id, wav->riff->size + 8,
+			wav->riff->format,
 			wav->fmt->id, wav->fmt->size,
 			wav->fmt->audiofmt == 1 ? "PCM\0" : "Compression\0",
 			wav->fmt->channels,
@@ -87,26 +91,47 @@ void infoWav( Wav *wav ){
 			wav->fmt->byterate,
 			wav->fmt->blockalign,
 			wav->fmt->bitspersample
-		); 
+	); 
 	if(wav->list) {
-		printf( "%.4s\n\tSize: %i Bytes\n", wav->list->id, wav->list->size);
-		char *data = wav->list->data;
-		printf("\t%.4s\n", data );
+		printf( "%.4s\n"
+				"\tSize: %i Bytes\n"
+				"\t%.4s\n",
+				wav->list->id,
+				wav->list->size,
+				wav->list->data
+		);
 		int pos = 4;
+		char *data = wav->list->data + 4;
 		int size;
-		data+=pos;
 		while( pos < wav->list->size ){
 			printf("\t%.4s ", data );
 			pos+=4;
-			data+=pos;
-			size = * (int*) data;
+			data+=4;
+			size = * ((int*) data);
 			printf("Size: %i Bytes\n", size);
 			pos+=4;
-			data+=pos;
+			data+=4;
 			printf("\t\t%.*s\n", size, data);
-			pos += size + 8;
-			data+=pos;
+			pos+=size;
+			data+=size;
 		}
 	}
-	printf("%.4s\n\tSize: %i Bytes\n\tData: RAW\n", wav->data->id, wav->data->size );
+	printf("%.4s\n"
+		   "\tSize: %i Bytes\n"
+		   "\tData:\n\t\t",
+		   wav->data->id,
+		   wav->data->size
+	);
+	int i = 0;
+	char c = 0;
+	while( i < wav->data->size ){
+		printf("%02hhX ", wav->data->data[i] );
+		i++;
+		c++;
+		if( c == 15 ){
+			printf("\n\t\t");
+			c = 0;
+		}
+	}
+	printf("\n");
 }

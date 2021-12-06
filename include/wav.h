@@ -2,9 +2,9 @@
 #define WAV_H
 
 typedef struct {
-	char	id[4];
-	int		size;
-	char	format[4];
+	char	id[4];		// RIFF
+	int		size;		// File Size
+	char	format[4];	// WAV
 } Riff;
 
 typedef struct {
