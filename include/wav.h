@@ -2,32 +2,32 @@
 #define WAV_H
 
 typedef struct {
-	char	id[4];		// RIFF
-	int		size;		// File Size
-	char	format[4];	// WAV
+	char			id[4];		// RIFF
+	unsigned int	size;		// File Size
+	char			format[4];	// WAV
 } Riff;
 
 typedef struct {
-	char	id[4];
-	int		size;
-	short	audiofmt;
-	short	channels;
-	int		samplerate;
-	int		byterate;
-	short	blockalign;
-	short	bitspersample;
+	char			id[4];
+	unsigned int	size;
+	unsigned short	audiofmt;
+	unsigned short	channels;
+	unsigned int	samplerate;
+	unsigned int	byterate;
+	unsigned short	blockalign;
+	unsigned short	bitspersample;
 } Fmt;
 
 typedef struct {
-	char	id[4];
-	int		size;
-	char	*data;
+	char			id[4];
+	unsigned int	size;
+	char			*data;
 } List;
 
 typedef struct {
-	char	id[4];
-	int		size;
-	char	*data;
+	char			id[4];
+	unsigned int	size;
+	char			*data;
 } Data;
 
 typedef struct {

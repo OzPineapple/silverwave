@@ -1,0 +1,550 @@
+make clean
+make[1]: se entra en el directorio '/home/oz/docs/school/ESCOM/periods/6/señal/repo'
+rm -f *.o
+rm -f conv
+make[1]: se sale del directorio '/home/oz/docs/school/ESCOM/periods/6/señal/repo'
+make build
+make[1]: se entra en el directorio '/home/oz/docs/school/ESCOM/periods/6/señal/repo'
+tcc -lm -g conv.c include/*.c -o conv
+make[1]: se sale del directorio '/home/oz/docs/school/ESCOM/periods/6/señal/repo'
+make test
+make[1]: se entra en el directorio '/home/oz/docs/school/ESCOM/periods/6/señal/repo'
+rm -f out* img/out.png
+./conv sound/square.wav sound/square.wav out.wav
+RIFF
+	Size of file: 748 Bytes
+	Type: WAVE
+fmt 
+	Size: 16 Bytes
+	Audio Format: PCM
+	Number of Channels: 1
+	Sample rate: 22000 Hz
+	Byte rate: 44000 Bytes
+	Block aling: 2 Bytes
+	Bits per sample: 16 Bits
+data
+	Size: 704 Bytes
+	Data:
+		FF FF 00 00 00 00 00 00 00 00 00 00 01 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 
+		FF FF FF FF FF FF 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 
+		FF FF 01 00 01 00 00 00 01 00 00 00 00 00 00 
+		00 00 00 FF FF 00 00 00 00 00 00 00 00 00 00 
+		00 00 01 00 00 00 00 00 00 00 01 00 01 00 01 
+		00 00 00 FF FF 01 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 01 00 00 00 00 00 00 00 01 
+		00 00 00 01 00 FF FF 00 00 FF FF 00 00 01 00 
+		01 00 FF FF 01 00 00 00 01 00 00 00 00 00 00 
+		00 FF FF 00 00 00 00 00 00 00 00 01 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 01 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 FF FF 00 00 00 00 
+		00 00 00 00 00 00 00 00 FF FF FF 7F FF 7F FF 
+		7F FE 7F FF 7F FF 7F FF 7F FF 7F FF 7F FE 7F 
+		FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F FE 7F FF 
+		7F FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F 
+		FE 7F FF 7F FF 7F FF 7F FF 7F FF 7F FE 7F FF 
+		7F FF 7F FE 7F FF 7F FF 7F FF 7F FF 7F FF 7F 
+		FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F FE 7F FF 
+		7F FF 7F FF 7F FE 7F FF 7F FF 7F FF 7F FF 7F 
+		FE 7F FF 7F FF 7F FF 7F FF 7F FE 7F FF 7F FF 
+		7F FE 7F FF 7F FF 7F FE 7F FF 7F FF 7F FF 7F 
+		FF 7F FE 7F FF 7F FF 7F FF 7F FF 7F FF 7F FF 
+		7F FF 7F FF 7F FF 7F FF 7F FE 7F FE 7F FF 7F 
+		FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F FF 
+		7F FF 7F FE 7F FF 7F FE 7F FE 7F FF 7F FF 7F 
+		FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F FF 
+		7F FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F FE 7F 
+		FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F FE 
+		7F FF 7F FF 7F FF 7F FF 7F FE 7F FF 7F FF 7F 
+		FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F FF 
+		7F 01 00 00 00 00 00 00 00 01 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 FF FF 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		FF FF 01 00 00 00 00 00 00 00 00 00 00 00 01 
+		00 01 00 00 00 00 00 01 00 00 00 00 00 00 00 
+		00 00 00 00 FF FF 00 00 FF FF 01 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 
+		00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 
+		00 FF FF 01 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 FF FF FF FF 00 
+		00 00 00 00 00 00 00 01 00 01 00 00 00 00 00 
+		00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 FF FF FF FF 00 00 00 00 00 00 00 00 FF FF 
+		00 00 00 00 00 00 FF FF 00 00 00 00 00 00 
+RIFF
+	Size of file: 748 Bytes
+	Type: WAVE
+fmt 
+	Size: 16 Bytes
+	Audio Format: PCM
+	Number of Channels: 1
+	Sample rate: 22000 Hz
+	Byte rate: 44000 Bytes
+	Block aling: 2 Bytes
+	Bits per sample: 16 Bits
+data
+	Size: 704 Bytes
+	Data:
+		FF FF 00 00 00 00 00 00 00 00 00 00 01 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 
+		FF FF FF FF FF FF 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 
+		FF FF 01 00 01 00 00 00 01 00 00 00 00 00 00 
+		00 00 00 FF FF 00 00 00 00 00 00 00 00 00 00 
+		00 00 01 00 00 00 00 00 00 00 01 00 01 00 01 
+		00 00 00 FF FF 01 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 01 00 00 00 00 00 00 00 01 
+		00 00 00 01 00 FF FF 00 00 FF FF 00 00 01 00 
+		01 00 FF FF 01 00 00 00 01 00 00 00 00 00 00 
+		00 FF FF 00 00 00 00 00 00 00 00 01 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 01 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 FF FF 00 00 00 00 
+		00 00 00 00 00 00 00 00 FF FF FF 7F FF 7F FF 
+		7F FE 7F FF 7F FF 7F FF 7F FF 7F FF 7F FE 7F 
+		FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F FE 7F FF 
+		7F FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F 
+		FE 7F FF 7F FF 7F FF 7F FF 7F FF 7F FE 7F FF 
+		7F FF 7F FE 7F FF 7F FF 7F FF 7F FF 7F FF 7F 
+		FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F FE 7F FF 
+		7F FF 7F FF 7F FE 7F FF 7F FF 7F FF 7F FF 7F 
+		FE 7F FF 7F FF 7F FF 7F FF 7F FE 7F FF 7F FF 
+		7F FE 7F FF 7F FF 7F FE 7F FF 7F FF 7F FF 7F 
+		FF 7F FE 7F FF 7F FF 7F FF 7F FF 7F FF 7F FF 
+		7F FF 7F FF 7F FF 7F FF 7F FE 7F FE 7F FF 7F 
+		FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F FF 
+		7F FF 7F FE 7F FF 7F FE 7F FE 7F FF 7F FF 7F 
+		FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F FF 
+		7F FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F FE 7F 
+		FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F FE 
+		7F FF 7F FF 7F FF 7F FF 7F FE 7F FF 7F FF 7F 
+		FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F FF 
+		7F 01 00 00 00 00 00 00 00 01 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 FF FF 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		FF FF 01 00 00 00 00 00 00 00 00 00 00 00 01 
+		00 01 00 00 00 00 00 01 00 00 00 00 00 00 00 
+		00 00 00 00 FF FF 00 00 FF FF 01 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 
+		00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 
+		00 FF FF 01 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 FF FF FF FF 00 
+		00 00 00 00 00 00 00 01 00 01 00 00 00 00 00 
+		00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 FF FF FF FF 00 00 00 00 00 00 00 00 FF FF 
+		00 00 00 00 00 00 FF FF 00 00 00 00 00 00 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+RIFF
+	Size of file: 748 Bytes
+	Type: WAVE
+fmt 
+	Size: 16 Bytes
+	Audio Format: PCM
+	Number of Channels: 1
+	Sample rate: 22000 Hz
+	Byte rate: 44000 Bytes
+	Block aling: 2 Bytes
+	Bits per sample: 16 Bits
+data
+	Size: 704 Bytes
+	Data:
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+		00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+./plot out.wav
+make[1]: se sale del directorio '/home/oz/docs/school/ESCOM/periods/6/señal/repo'

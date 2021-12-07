@@ -1,11 +1,12 @@
 #!/bin/bash
 sox $1 -t dat dat.dat
 
-channels=$(sed -n "2p" dat.dat | sed "s/ \\+/\\t/g" | cut -f 3)
+cha=$(sed -n "2p" dat.dat | rev );
+cha=${cha:1:1}
 tail -n+3 dat.dat > aux.dat
 mv aux.dat dat.dat
 
-if expr "$channels=2"
+if [[ "$cha" == "2" ]];
 then
 	sed "s/ \\+/\\t/g" dat.dat > aux.dat
 	cut -f 2,3 aux.dat > dat1.dat
@@ -15,7 +16,7 @@ then
 	echo 'set term png size 900,700' > script.gpi
 	echo 'set title "'$filename'"' >> script.gpi
 	echo 'set grid' >> script.gpi
-	echo 'set yrange [-2:2]' >> script.gpi
+	echo 'set yrange [-1.5:1.5]' >> script.gpi
 	echo -e 'set output "'$filename'1.png"' >> script.gpi
 	echo 'set style line 1 lw 3 lc "blue"' >> script.gpi
 	echo 'plot "dat1.dat" title "'$filename'" with line ls 1' >> script.gpi
@@ -23,7 +24,7 @@ then
 	echo 'set term png size 900,700' > script.gpi
 	echo 'set title "'$filename'"' >> script.gpi
 	echo 'set grid' >> script.gpi
-	echo 'set yrange [-2:2]' >> script.gpi
+	echo 'set yrange [-1.5:1.5]' >> script.gpi
 	echo -e 'set output "'$filename'2.png"' >> script.gpi
 	echo 'set style line 1 lw 3 lc "red"' >> script.gpi
 	echo 'plot "dat2.dat" title "'$filename'" with line ls 1' >> script.gpi
@@ -39,7 +40,7 @@ filename=$(basename $1 .wav)
 echo 'set term png size 900,700' > script.gpi
 echo 'set title "'$filename'"' >> script.gpi
 echo 'set grid' >> script.gpi
-echo 'set yrange [-2:2]' >> script.gpi
+echo 'set yrange [-1.5:1.5]' >> script.gpi
 echo -e 'set output "'$filename'.png"' >> script.gpi
 echo 'set style line 1 lw 3 lc "blue"' >> script.gpi
 echo 'plot "dat.dat" title "'$filename'" with line ls 1' >> script.gpi

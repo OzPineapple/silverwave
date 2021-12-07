@@ -72,16 +72,16 @@ Wav *destroyWav( Wav * wav ){
 
 void infoWav( Wav *wav ){
 	printf("%.4s\n"
-			"\tSize of file: %i Bytes\n"
+			"\tSize of file: %u Bytes\n"
 			"\tType: %.4s\n"
 			"%.4s\n"
-			"\tSize: %i Bytes\n"
+			"\tSize: %u Bytes\n"
 			"\tAudio Format: %s\n"
-			"\tNumber of Channels: %hi\n"
-			"\tSample rate: %i Hz\n"
-			"\tByte rate: %hi Bytes\n"
-			"\tBlock aling: %hi Bytes\n"
-			"\tBits per sample: %i Bits\n",
+			"\tNumber of Channels: %hu\n"
+			"\tSample rate: %u Hz\n"
+			"\tByte rate: %hu Bytes\n"
+			"\tBlock aling: %hu Bytes\n"
+			"\tBits per sample: %u Bits\n",
 			wav->riff->id, wav->riff->size + 8,
 			wav->riff->format,
 			wav->fmt->id, wav->fmt->size,
@@ -94,7 +94,7 @@ void infoWav( Wav *wav ){
 	); 
 	if(wav->list) {
 		printf( "%.4s\n"
-				"\tSize: %i Bytes\n"
+				"\tSize: %u Bytes\n"
 				"\t%.4s\n",
 				wav->list->id,
 				wav->list->size,
@@ -108,7 +108,7 @@ void infoWav( Wav *wav ){
 			pos+=4;
 			data+=4;
 			size = * ((int*) data);
-			printf("Size: %i Bytes\n", size);
+			printf("Size: %u Bytes\n", size);
 			pos+=4;
 			data+=4;
 			printf("\t\t%.*s\n", size, data);
@@ -117,7 +117,7 @@ void infoWav( Wav *wav ){
 		}
 	}
 	printf("%.4s\n"
-		   "\tSize: %i Bytes\n"
+		   "\tSize: %u Bytes\n"
 		   "\tData:\n\t\t",
 		   wav->data->id,
 		   wav->data->size

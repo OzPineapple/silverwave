@@ -9,14 +9,14 @@ int main(int argc, char ** argv ){
 	Wav * wav = initWav( argv[1] );
 	infoWav( wav );
 
-	short *x = (short*) wav->data->data;
-	int    K = wav->data->size >> 1;
-	short *r = ecalloc( wav->data->size << 1 , 2 );
+	short *f = (short*) wav->data->data;
+	int    N = wav->data->size >> 1;
+	short *F = ecalloc( wav->data->size << 1 , 1 );
 
-	for( size_t k=0; k<K; k++){
-		for( size_t n=0; n<K; n++){
-			r[k]	+= x[n] * cos(2*M_PI*n*k/K);
-			r[++k]	+= x[n] * sin(2*M_PI*n*k/K);
+	for( size_t u=0; u<(N<<1); u++){
+		for( size_t n=0; n<N; n++){
+			F[u]	+= f[n] *  cos( 2*M_PI /N *u*n );
+			F[++u]	+= f[n] * -sin( 2*M_PI /N *u*n );
 		}
 	}
 
@@ -32,7 +32,7 @@ int main(int argc, char ** argv ){
 		wav->fmt->bitspersample / 8;
 	wav->data->size = wav->data->size << 1;
 	free( wav->data->data );
-	wav->data->data = (char*) r;
+	wav->data->data = (char*) F;
 
 	infoWav( wav );
 	writeWav( wav, argv[2] );

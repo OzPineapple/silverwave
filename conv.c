@@ -8,19 +8,29 @@ int main(int argc, char ** argv ){
 	Wav* wavA = initWav( argv[1] );
 	Wav* wavB = initWav( argv[2] );
 
+	infoWav( wavA );
+	infoWav( wavB );
+
 	short *a = (short*) wavA->data->data;
 	short *b = (short*) wavB->data->data;
 	short *c = ecalloc( wavA->data->size, 1);
-	int	   K = wavA->data->size >> 1;
-	int    N = wavB->data->size >> 1;
+	unsigned int	K = wavA->data->size >> 1;
+	unsigned int    N = wavB->data->size >> 1;
 
-	for( size_t k=0; k<K; k++)
-		for( size_t n=0; n<N; n++)
-			c[k] += a[n] * (k-n < 0 ? 0 : b[k-n]);
+	for( unsigned int k = 0; k < K; k++){
+		for( unsigned int n = K; n > 0; n--){
+			//printf("%d,%d " , k, n);
+			printf("%d ",(k-n) < 0 ? 0 : (k-n) > (N-1) ? 0 : k-n );
+			c[k] += ( (k-n) < 0 ? 0 : (k-n) > (N-1) ? 0 : a[k-n] ) * b[n];
+		}
+		printf("\n");
+	}	
 
 	free( wavA->data->data );
 	wavA->data->data = (char*) c;
 	writeWav( wavA, argv[3] );
+
+	infoWav( wavA );
 
 	destroyWav( wavA );
 	destroyWav( wavB );

@@ -1,7 +1,8 @@
-main=fourier
+main=conv
 exec=$(main)
-# infile=sound/sqrt.wav sound/sqrt.wav
-infile=sound/cos62.5.hex.5.wav
+ infile=sound/sqrt.wav sound/sqrt.wav
+ #infile=sound/square.wav sound/square.wav
+ #infile=sound/cos62.5.hex.5.wav
 outfile=out.wav
 cc=tcc
 opts=-lm -g

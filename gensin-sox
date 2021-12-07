@@ -1,1 +1,0 @@
-sox -V -r 22000 -n -b 16 -c 1 sin-62K.wav synth 0.016 sin 62000 vol -10dB
