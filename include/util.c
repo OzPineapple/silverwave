@@ -1,4 +1,4 @@
-/* See LICENSE file for copyright and license details. */
+/* Source code from Suckless.com */
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>

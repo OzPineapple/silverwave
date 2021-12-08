@@ -15,8 +15,10 @@ int main(int argc, char ** argv ){
 
 	for( size_t u=0; u<(N<<1); u++){
 		for( size_t n=0; n<N; n++){
-			F[u]	+= f[n] *  cos( 2*M_PI /N *u*n );
-			F[++u]	+= f[n] * -sin( 2*M_PI /N *u*n );
+			double r = f[n] *  cos( 2*M_PI /N *u*n );
+			double i = f[n] * -sin( 2*M_PI /N *u*n );
+			F[u]   = (int) r;
+			F[++u] = (int) i;
 		}
 	}
 

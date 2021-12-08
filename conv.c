@@ -1,3 +1,4 @@
+/* Autor Oz */
 #include <stdio.h>
 #include <stdlib.h>
 #include "include/wav.h"
@@ -11,27 +12,27 @@ int main(int argc, char ** argv ){
 	infoWav( wavA );
 	infoWav( wavB );
 
-	short *a = (short*) wavA->data->data;
-	short *b = (short*) wavB->data->data;
-	short *c = ecalloc( wavA->data->size, 1);
-	unsigned int	K = wavA->data->size >> 1;
-	unsigned int    N = wavB->data->size >> 1;
+	unsigned int K = (wavA->data->size >> 1) + (wavB->data->size >> 1) - 1; 
+	unsigned int A = wavA->data->size >> 1;
+	unsigned int B = wavB->data->size >> 1;
+	short		*a = (short*) wavA->data->data;
+	short		*b = (short*) wavB->data->data;
+	short		*c = ecalloc( K , 2 );
 
-	for( unsigned int k = 0; k < K; k++){
-		for( unsigned int n = K; n > 0; n--){
-			//printf("%d,%d " , k, n);
-			printf("%d ",(k-n) < 0 ? 0 : (k-n) > (N-1) ? 0 : k-n );
-			c[k] += ( (k-n) < 0 ? 0 : (k-n) > (N-1) ? 0 : a[k-n] ) * b[n];
-		}
-		printf("\n");
-	}	
+	for( unsigned int k = 0; k < K; k++)
+		for( unsigned int n = 0; n < A; n++)
+			if( k >= n && (k-n) < B)
+				if( a[n] || b[k-n] )
+					c[k] += a[n] * b[k-n];
 
 	free( wavA->data->data );
+	wavA->riff->size += wavB->data->size - 2;
+	wavA->data->size += wavB->data->size - 2;
 	wavA->data->data = (char*) c;
-	writeWav( wavA, argv[3] );
 
 	infoWav( wavA );
 
+	writeWav( wavA, argv[3] );
 	destroyWav( wavA );
 	destroyWav( wavB );
 }

@@ -1,0 +1,8 @@
+This freeware package dirac.zip contains Dirac impulses (spikes) in different 
+wav formats. For convenience, file length is always half a second.
+It's meant for creating impulse responses.
+
+Copyright (c) 2003 Christian Andersch
+www.noisetime.com
+
+Have fun!

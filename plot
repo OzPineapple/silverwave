@@ -1,6 +1,8 @@
 #!/bin/bash
 sox $1 -t dat dat.dat
 
+filename=$(basename $1 .wav)
+rm -f img/$filename.png
 cha=$(sed -n "2p" dat.dat | rev );
 cha=${cha:1:1}
 tail -n+3 dat.dat > aux.dat
@@ -12,7 +14,6 @@ then
 	cut -f 2,3 aux.dat > dat1.dat
 	cut -f 2,4 aux.dat > dat2.dat
 	rm aux.dat
-	filename=$(basename $1 .wav)
 	echo 'set term png size 900,700' > script.gpi
 	echo 'set title "'$filename'"' >> script.gpi
 	echo 'set grid' >> script.gpi
@@ -36,7 +37,6 @@ then
 	exit 0
 fi
 
-filename=$(basename $1 .wav)
 echo 'set term png size 900,700' > script.gpi
 echo 'set title "'$filename'"' >> script.gpi
 echo 'set grid' >> script.gpi
