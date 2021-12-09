@@ -1,8 +1,8 @@
 /* Autor Oz */
 #include <stdio.h>
 #include <stdlib.h>
-#include "include/wav.h"
-#include "include/util.h"
+#include "lib/wav.h"
+#include "lib/util.h"
 
 int main(int argc, char ** argv ){
 	if( argc < 4 ) die("Faltan argumentos: a.wav b.wav out.wav");
