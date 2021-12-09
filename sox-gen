@@ -1,5 +1,0 @@
-#!/bin/sh
-# Gen Sin Wave
-sox -V -r 22000 -n -b 16 -c 1 sin.wav synth 0.016 sin 62000 vol -10dB
-# Gen Delta train Wave
-sox -V -r 22000 -n -b 16 -c 1 delta-train.wav synth 0.016 square 250 50 50 1

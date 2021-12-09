@@ -42,5 +42,6 @@ typedef struct {
 Wav *initWav( char * file );
 void writeWav( Wav *wav, char *file );
 Wav *destroyWav( Wav * wav );
+void delNegWav( Wav *wav );
 void infoWav( Wav *wav );
-#endif //_WAV_H
+#endif //_INCLUDE/WAV_H

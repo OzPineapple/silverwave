@@ -71,6 +71,13 @@ Wav *destroyWav( Wav * wav ){
 	return NULL;
 }
 
+void delNegWav( Wav *wav ){
+	unsigned int size = wav->data->size >> 1;
+	short *dat = (short *) wav->data->data;
+	for( unsigned int i=0; i<size; i++ )
+		dat[i] = (dat[i] < 0) ? 0 : dat[i];
+}
+
 void infoWav( Wav *wav ){
 	printf("%.4s\n"
 			"\tSize of file: %u Bytes\n"

@@ -1,10 +1,10 @@
-main=fourier
+main=conv
 exec=$(main)
  #infile=sound/sqrt.wav sound/sqrt.wav
- #infile=sound/square.wav sound/square.wav
+ infile=sound/square.wav sound/square.wav
  #infile=delta-train.wav sound/square.wav 
  #infile=delta-train.wav delta-train.wav
- infile=sound/cos62.5.hex.5.wav
+ #infile=sound/cos62.5.hex.5.wav
  #infile=sound/delta-train.wav
 outfile=out.wav
 cc=gcc
@@ -23,7 +23,7 @@ test:
 s=1
 
 testconv:
-	sox -r 44000 -b 16 -c 1 -n square.wav synth $s square $s 50 vol -10dB
+	sox -r 44000 -b 16 -c 1 -n square.wav synth $s square $s 50
 	rm -f out.wav
 	./conv square.wav square.wav out.wav
 	./plot square.wav
