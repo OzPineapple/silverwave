@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include "include/wav.h"
-#include "include/util.h"
+#include "lib/wav.h"
+#include "lib/util.h"
 
 int main(int argc, char ** argv ){
 	if( argc < 3 ) die("Faltan argumentos: in.wav.wav");
@@ -13,13 +13,24 @@ int main(int argc, char ** argv ){
 	int    N = wav->data->size >> 1;
 	short *F = ecalloc( wav->data->size << 1 , 1 );
 
-	for( size_t u=0; u<(N<<1); u++){
-		for( size_t n=0; n<N; n++){
-			double r = f[n] *  cos( 2*M_PI /N *u*n );
-			double i = f[n] * -sin( 2*M_PI /N *u*n );
-			F[u]   = (int) r;
-			F[++u] = (int) i;
+	float sample, angle, real, imagi, u=0.0, n=0.0;
+
+	for( size_t i=0; i < N << 1; u++,  i++){
+		n		= 0.0;
+		real	= 0.0;
+		imagi	= 0.0;
+		for( size_t j = 0; j < N ; n++, j++){
+			sample = f[j] * 1.0 / 32767.0 ;
+			angle  = 2.0 * M_PI / (N*1.0) * u * n;
+			real  += sample *  cos( angle );
+			imagi += sample * -sin( angle );
 		}
+		real  /= N * 1.0;
+		imagi /= N * 1.0;
+		real  *= 32767.0;
+		imagi *= 32767.0;
+		F[i]   = (int) real;
+		F[++i] = (int) imagi;
 	}
 
 	// Change RIFF to 2 channels

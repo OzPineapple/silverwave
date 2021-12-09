@@ -43,6 +43,15 @@ Wav *initWav( char * file ){
 	return wav;
 }
 
+Wav * genWav(
+			unsigned int rate,
+			unsigned int bits,
+			unsigned int channels
+		){
+	Wav *wav = ecalloc( sizeof(Wav), 1 );
+	return wav;
+}
+
 void writeWav( Wav *wav, char *file ){
 	int fd = open( file, O_WRONLY | O_APPEND | O_CREAT, 0644 );
 	if( fd == -1 ) die("Could not open %s", file );
