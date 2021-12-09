@@ -16,26 +16,22 @@ int main(int argc, char ** argv ){
 	unsigned int B = wavB->data->size >> 1;
 	unsigned int K = A + B - 1;
 
-	short		*as = (short*) wavA->data->data;
-	short		*bs = (short*) wavB->data->data;
-	short		*cs = ecalloc( K , 2 );
-	float		a,b,c;
+	short *as = (short*) wavA->data->data;
+	short *bs = (short*) wavB->data->data;
+	short *cs = ecalloc( K , 2 );
+	float a,b,c;
 
-	for( unsigned int k = 0; k < K; k++){
-		c=0;
-		for( unsigned int n = 0, u = B-1; n < B; n++, u-- ){
-			if( (k+n) < A ){
-				a = as[ k + n ] * 1.0 / 32767.0;
-				b = bs[   u   ] * 1.0 / 32767.0;
-				printf("\t(%d, %d) %f += %f * %f\n", k+n, u, c, a, b ); 
+	for( long int k = 0; k < K; k++, c=0){
+		for( long int n = B-1; n >= 0; n-- ){
+			if( k>=n && (k-n)<B ){
+				a = as[ k-n ] * 1.0 / 32767.0;
+				b = bs[  n  ] * 1.0 / 32767.0;
 				c += a * b ;
-				//cs[k] += as[ k + n ] * bs[ u ];
 			}
 		}
 		c /= B * 1.0; // Divide by the maximun number of sums
 		c *= 32767.0; // Ponder to get the integer value
 		cs[k] = (int) c;
-		printf("%d -> %d\n", k, cs[k] );
 	}
 
 	free( wavA->data->data );
