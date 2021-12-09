@@ -17,7 +17,7 @@ then
 	echo 'set term png size 900,700' > script.gpi
 	echo 'set title "'$filename'"' >> script.gpi
 	echo 'set grid' >> script.gpi
-	echo 'set yrange [-1.5:1.5]' >> script.gpi
+	#echo 'set yrange [-1.5:1.5]' >> script.gpi
 	echo -e 'set output "'$filename'1.png"' >> script.gpi
 	echo 'set style line 1 lw 3 lc "blue"' >> script.gpi
 	echo 'plot "dat1.dat" title "'$filename'" with line ls 1' >> script.gpi
@@ -25,7 +25,7 @@ then
 	echo 'set term png size 900,700' > script.gpi
 	echo 'set title "'$filename'"' >> script.gpi
 	echo 'set grid' >> script.gpi
-	echo 'set yrange [-1.5:1.5]' >> script.gpi
+	#echo 'set yrange [-1.5:1.5]' >> script.gpi
 	echo -e 'set output "'$filename'2.png"' >> script.gpi
 	echo 'set style line 1 lw 3 lc "red"' >> script.gpi
 	echo 'plot "dat2.dat" title "'$filename'" with line ls 1' >> script.gpi
