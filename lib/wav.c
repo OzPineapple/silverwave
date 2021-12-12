@@ -53,7 +53,7 @@ Wav * genWav(
 }
 
 void writeWav( Wav *wav, char *file ){
-	int fd = open( file, O_WRONLY | O_APPEND | O_CREAT, 0644 );
+	int fd = open( file, O_WRONLY | O_TRUNC | O_CREAT, 0644 );
 	if( fd == -1 ) die("Could not open %s", file );
 	write( fd, (char*) wav->riff, sizeof(Riff) );
 	write( fd, (char*) wav->fmt,  sizeof(Fmt)  );
