@@ -11,8 +11,16 @@ mv aux.dat dat.dat
 if [[ "$cha" == "2" ]];
 then
 	sed "s/ \\+/\\t/g" dat.dat > aux.dat
-	cut -f 2,3 aux.dat > dat1.dat
-	cut -f 2,4 aux.dat > dat2.dat
+	i=0
+	for l in `tail -n+3 out.dat | sed "s/ \+/\t/g" | cut -f 3`; do
+		printf "%f\t%f\n" $i $l >> dat1.dat
+		i=$((i+1))
+	done
+	i=0
+	for l in `tail -n+3 out.dat | sed "s/ \+/\t/g" | cut -f 4`; do
+		printf "%f\t%f\n" $i $l >> dat2.dat
+		i=$((i+1))
+	done
 	rm aux.dat
 	echo 'set term png size 900,700' > script.gpi
 	echo 'set title "'$filename'"' >> script.gpi
