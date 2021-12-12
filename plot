@@ -12,12 +12,12 @@ if [[ "$cha" == "2" ]];
 then
 	sed "s/ \\+/\\t/g" dat.dat > aux.dat
 	i=0
-	for l in `tail -n+3 out.dat | sed "s/ \+/\t/g" | cut -f 3`; do
+	for l in `cut -f 3 aux.dat`; do
 		printf "%f\t%f\n" $i $l >> dat1.dat
 		i=$((i+1))
 	done
 	i=0
-	for l in `tail -n+3 out.dat | sed "s/ \+/\t/g" | cut -f 4`; do
+	for l in `cut -f 4 aux.dat`; do
 		printf "%f\t%f\n" $i $l >> dat2.dat
 		i=$((i+1))
 	done

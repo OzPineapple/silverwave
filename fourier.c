@@ -31,6 +31,7 @@ int main(int argc, char ** argv ){
 		if( mag < 0 ) mag *= -1.0;
 		phase = atan( imagi / real );
 		mag /= N * 1.0;
+		phase /= 1.5;
 		mag *= 32767.0;
 		phase *= 32767.0;
 		F[i]   = (int) mag;
