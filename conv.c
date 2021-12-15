@@ -29,6 +29,7 @@ int main(int argc, char ** argv ){
 				c += a * b ;
 			}
 		}
+		c *= 2.0; // IDK may frec theorem? maximun is 0.5 so multiply by 2
 		c /= B * 1.0; // Divide by the maximun number of sums
 		c *= 32767.0; // Ponder to get the integer value
 		cs[k] = (int) c;

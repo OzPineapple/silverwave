@@ -1,7 +1,8 @@
 main=fourier
 exec=$(main)
  #infile=sound/square-left.wav sound/square-left.wav
- infile=sound/cos62.5.hex.5.wav
+ infile=sound/cos-62.5.wav
+ #infile=sin-62.5.wav
 outfile=out.wav
 cc=tcc
 opts=-lm -g
@@ -20,7 +21,7 @@ build:
 	$(cc) $(opts) $(main).c lib/*.c -o $(exec)
 
 full:
-	cat include/*.h include/*.c $(main).c | sed "/#include \".*\"/d;/infoWav/d" > $(main)-full.c
+	cat lib/*.h lib/*.c $(main).c | sed "/#include \".*\"/d;/infoWav.*;/d" > $(main)-full.c
 
 clean:
 	rm -f *.o out.wav img/out.png

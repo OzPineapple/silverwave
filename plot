@@ -1,58 +1,50 @@
 #!/bin/bash
-sox $1 -t dat dat.dat
 
+cache=.cache/gnuplot
+config=.config/gnuplot
 filename=$(basename $1 .wav)
-rm -f img/$filename.png
-cha=$(sed -n "2p" dat.dat | rev );
+
+rm -f $cache/* img/*
+
+sox $1 -t dat $cache/dat.dat
+cha=$(sed -n "2p" $cache/dat.dat | rev );
 cha=${cha:1:1}
-tail -n+3 dat.dat > aux.dat
-mv aux.dat dat.dat
+
+tail -n+3 $cache/dat.dat > $cache/aux.dat
+mv $cache/aux.dat $cache/dat.dat
 
 if [[ "$cha" == "2" ]];
 then
-	sed "s/ \\+/\\t/g" dat.dat > aux.dat
+	sed "s/ \\+/\\t/g" $cache/dat.dat > $cache/aux.dat
+
 	i=0
-	for l in `cut -f 3 aux.dat`; do
-		printf "%f\t%f\n" $i $l >> dat1.dat
+	for l in `cut -f 3 $cache/aux.dat`; do
+		printf "%f\t%f\n" $i $l >> $cache/dat-1.dat
 		i=$((i+1))
 	done
+	tmp=`sed "s/\\//\\\\\\\\\//g" <<< "${cache}/dat-1.dat"`
+	sed "s/<name>/${filename}-1/g;s/<color>/blue/g;s/<dat>/${tmp}/g;s/<style>/impulses/g" $config/script.gpi > $cache/script.gpi
+	gnuplot $cache/script.gpi
+
 	i=0
-	for l in `cut -f 4 aux.dat`; do
-		printf "%f\t%f\n" $i $l >> dat2.dat
+	for l in `cut -f 4 $cache/aux.dat`; do
+		printf "%f\t%f\n" $i $l >> $cache/dat-2.dat
 		i=$((i+1))
 	done
-	rm aux.dat
-	echo 'set term png size 900,700' > script.gpi
-	echo 'set title "'$filename'"' >> script.gpi
-	echo 'set grid' >> script.gpi
-	#echo 'set yrange [-1.5:1.5]' >> script.gpi
-	echo -e 'set output "'$filename'1.png"' >> script.gpi
-	echo 'set style line 1 lw 3 lc "blue"' >> script.gpi
-	echo 'plot "dat1.dat" title "'$filename'" with line ls 1' >> script.gpi
-	gnuplot script.gpi
-	echo 'set term png size 900,700' > script.gpi
-	echo 'set title "'$filename'"' >> script.gpi
-	echo 'set grid' >> script.gpi
-	#echo 'set yrange [-1.5:1.5]' >> script.gpi
-	echo -e 'set output "'$filename'2.png"' >> script.gpi
-	echo 'set style line 1 lw 3 lc "red"' >> script.gpi
-	echo 'plot "dat2.dat" title "'$filename'" with line ls 1' >> script.gpi
-	gnuplot script.gpi
-	convert $filename"1.png" $filename"2.png" -append $filename.png
-	mv $filename.png img
-	rm script.gpi dat.dat dat1.dat dat2.dat $filename"1.png" $filename"2.png"
+	tmp=`sed "s/\\//\\\\\\\\\//g" <<< "${cache}/dat-2.dat"`
+	sed "s/<name>/${filename}-2/g;s/<color>/red/g;s/<dat>/${tmp}/g;s/<style>/impulses/g" $config/script.gpi > $cache/script.gpi
+	gnuplot $cache/script.gpi
+
+	convert ${filename}-1.png ${filename}-2.png -append ${filename}.png
+
+	mv ${filename}.png img
+	rm $cache/aux.dat ${filename}*.png 
 	sxiv img/$filename.png &
 	exit 0
 fi
 
-echo 'set term png size 900,700' > script.gpi
-echo 'set title "'$filename'"' >> script.gpi
-echo 'set grid' >> script.gpi
-#echo 'set yrange [-1.5:1.5]' >> script.gpi
-echo -e 'set output "'$filename'.png"' >> script.gpi
-echo 'set style line 1 lw 3 lc "blue"' >> script.gpi
-echo 'plot "dat.dat" title "'$filename'" with line ls 1' >> script.gpi
-gnuplot script.gpi
-rm script.gpi dat.dat
+tmp=`sed "s/\\//\\\\\\\\\//g" <<< "${cache}/dat.dat"`
+sed "s/<name>/${filename}/g;s/<color>/blue/g;s/<dat>/${tmp}/g;s/<style>/lines/g" $config/script.gpi > $cache/script.gpi
+gnuplot $cache/script.gpi
 mv $filename.png img
 sxiv img/$filename.png &
