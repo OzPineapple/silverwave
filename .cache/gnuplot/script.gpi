@@ -1,10 +1,10 @@
 set terminal png size 900,700
-set output "out.png"
-set title "out"
+set output "out-2.png"
+set title "out-2"
 set grid
 set yrange [-1:1]
-set style line 1 lw 4 lc "blue"
-plot ".cache/gnuplot/dat.dat" title "out" with lines ls 1
+set style line 1 lw 4 lc "red"
+plot ".cache/gnuplot/dat-2.dat" title "out-2" with impulses ls 1
 # set terminal x11
 # set output
 # replot

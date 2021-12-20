@@ -4,4 +4,6 @@ conv
 info
 log
 out.wav
+dat.dat
 img/
+.cache/gnuplot/*.dat
